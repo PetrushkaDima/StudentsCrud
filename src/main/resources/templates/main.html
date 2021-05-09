@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+    <form th:action="add" method="post">
+        <input type="text" name="lastName" placeholder="Фамилия">
+        <input type="text" name="firstName" placeholder="Имя">
+        <input type="text" name="middleName" placeholder="Отчество">
+        <input type="date" name="birthday" >
+        <input type="text" name="groupId" placeholder="Группа">
+        <input type="text" name="uniqueNumber" placeholder="Уникальный номер">
+        <button type="submit">Добавить студента</button>
+    </form>
+    <form th:action="delete" method="post">
+        <input type="text" placeholder="Уникальный номер" name="uniqueNumber">
+        <button type="submit">Удалить студента</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>День рождения</th>
+                <th>Группа</th>
+                <th>Уникальный номер</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="student : ${students}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.middleName}"></td>
+                <td th:text="${student.birthday}"></td>
+                <td th:text="${student.groupId}"></td>
+                <td th:text="${student.uniqueNumber}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
